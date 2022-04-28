@@ -1,0 +1,8 @@
+.venv/
+build/
+lib/
+include/
+*.tgz
+*.wasm
+*.js
+*.a
