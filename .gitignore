@@ -6,3 +6,4 @@ include/
 *.wasm
 *.js
 *.a
+*.o
