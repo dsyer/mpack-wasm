@@ -1,10 +1,30 @@
-Build with `emmake make`. Example compile:
+This project compiles [ludocode/mpack](https://github.com/ludocode/mpack) to a linkable WASM library. You can download a release from [GitHub](https://github.com/dsyer/mpack-wasm/releases). Or build it yourself with:
+
+```
+$ emmake make
+```
+
+Result:
+
+```
+$ ls -l mpack-wasm.tgz
+-rw-r--r-- 1 dsyer dsyer 111597 Apr 28 08:35 mpack-wasm.tgz
+$ tar -tzvf mpack-wasm.tgz 
+drwxr-xr-x dsyer/dsyer       0 2022-04-28 08:35 include/
+-rw-r--r-- dsyer/dsyer  260861 2022-04-28 08:35 include/mpack.h
+drwxr-xr-x dsyer/dsyer       0 2022-04-28 08:35 lib/
+-rw-r--r-- dsyer/dsyer  166000 2022-04-28 08:35 lib/libmpack.a
+```
+
+## Example Usage
+
+Compile the example like this:
 
 ```
 $ cd example
 $ npm install
 $ tar -xzvf ../mpack-wasm.tgz
-$ emcc -Os -s EXPORTED_FUNCTIONS="[_xform]" -s EXPORT_ES6=1 -s STANDALONE_WASM=1 -Wl,--no-entry -I include message.c lib/libmpack.a -o message.wasm
+$ emcc -Os -s EXPORTED_FUNCTIONS="[_xform]" -Wl,--no-entry -I include message.c lib/libmpack.a -o message.wasm
 ```
 
 Then in Node.js:
